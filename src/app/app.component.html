@@ -1,0 +1,11 @@
+<nav class="navbar navbar-dark bg-dark">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="text" placeholder="Nome" aria-label="Buscar" [(ngModel)]="filtro"
+      name="filtro">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="pesquisar()">Buscar</button>
+  </form>
+</nav>
+
+<div class="kjk">
+  <app-locadora [listaFilmes]="listaFilmes"></app-locadora>
+</div>
