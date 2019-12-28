@@ -1,31 +1,69 @@
-
-    <div class="margin">
-      <div class="form-row">
-        <div class="form-group col-md-5">
-          <label for="id">ID</label>
-          <input type="text" class="form-control" id="id" [(ngModel)]="id">
-        </div>
-        <div class="form-group col-md-5">
-          <label for="title">Title</label>
-          <input type="text" class="form-control" id="title" placeholder="Title" [(ngModel)]="mural.title">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-10">
-          <label for="description">Description</label>
-          <textarea class="form-control" id="description" rows="3" [(ngModel)]="mural.description"></textarea>
-        </div>
-      </div>
-    
-      <div class="form-row">
-        <div class="form-group col-md-5">
-          <label for="publish">Publish</label>
-          <input type="date" class="form-control" id="publish" [(ngModel)]="mural.publish">
-        </div>
-        <div class="form-group col-md-5">
-          <label for="visualization">Visualization</label>
-          <input type="date" class="form-control" id="visualization" [(ngModel)]="mural.visualization">
-        </div>
-      </div>
-      <button class="button" type="submit" (click)="save()">Purchase</button>
+<div class="margin">
+  <div class="row">
+    <div class="form-group col-md-3">
+      <label for="id">ID</label>
+      <input type="text" class="form-control" id="id" [(ngModel)]="mural.id" disabled>
     </div>
+    <div class="form-group col-md-7">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" placeholder="Title" [(ngModel)]="mural.title">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-10">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" rows="3" [(ngModel)]="mural.description"></textarea>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="publish">Publish</label>
+      <input type="date" class="form-control" id="publish" [(ngModel)]="mural.publish">
+    </div>
+    <div class="form-group col-md-5">
+      <label for="visualization">Visualization</label>
+      <input type="date" class="form-control" id="visualization" [(ngModel)]="mural.visualization">
+    </div>
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-5">
+    </div>
+    <div class="form-group col-md-5">
+      <button class="button" type="submit" (click)="save()" class="btn btn-primary"
+        style="float: right;">Purchase</button>
+    </div>
+  </div>
+
+  <div class="form-row paddingTable">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Publish</th>
+            <th scope="col">Visualization</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of listmural">
+            <th scope="row">{{i.id}}</th>
+            <td>{{i.title}}</td>
+            <td>{{i.description}}</td>
+            <td>{{i.publish | date : "dd/MM/yyyy"}}</td>
+            <td>{{i.visualization | date : "dd/MM/yyyy"}}</td>
+            <td><i class="material-icons" style="font-size:24px;" (click)="visibility(i)">visibility</i></td>
+            <td><i class="material-icons" style="font-size:24px;" (click)="remove(i)">delete</i></td>
+
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+</div>

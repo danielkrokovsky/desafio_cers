@@ -6,6 +6,6 @@ export class Mural {
     id:number;
     title:string;
     description:string
-    publish:string;
-    visualization:string;
+    publish:Date;
+    visualization:Date;
 }

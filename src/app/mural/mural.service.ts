@@ -13,8 +13,18 @@ export class MuralService {
 
 
   save(mural: Mural): Observable<Mural> {
-    
+
     return this.http.post<any>(`http://10.0.0.110:8080/api/mural`, mural);
-}
+  }
+
+  getAll(): Observable<Mural[]> {
+
+    return this.http.get<any>(`http://10.0.0.110:8080/api/mural`);
+  }
+
+  remove(mural: number): Observable<Mural> {
+
+    return this.http.delete<any>(`http://10.0.0.110:8080/api/mural/${mural}`);
+  }
 
 }
