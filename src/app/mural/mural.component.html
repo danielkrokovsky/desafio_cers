@@ -77,7 +77,7 @@
       <nav aria-label="Page navigation example" style="float: right;">
         <ul class="pagination">
           <li class="page-item" *ngFor="let page of page.arrayPages; index as i">
-            <a class="page-link" (click)="pagination(i)">{{i + 1}}</a>
+            <a class="page-link" (click)="data(i)">{{i + 1}}</a>
           </li>
         </ul>
       </nav>

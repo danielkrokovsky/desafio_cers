@@ -25,7 +25,7 @@ export class MuralComponent implements OnInit {
     this.mural = new Mural();
     this.page = new Pagination();
     this.loadPagination();
-    this.pagination(0);
+    this.data(0);
   }
 
 
@@ -40,7 +40,7 @@ export class MuralComponent implements OnInit {
     this.muralService.save(this.mural).subscribe(
 
       (res) => {
-        this.pagination(0);
+        this.data(0);
         this.mural = new Mural();
       }
     );
@@ -73,15 +73,14 @@ export class MuralComponent implements OnInit {
         });
 
         if (this.listmural.length === 0) {
-
-          this.pagination(0);
+          this.data(0);
           this.loadPagination();
         }
       }
     );
   }
 
-  pagination(page: number) {
+  data(page: number) {
 
     this.muralService.getAll(page).subscribe(pipe(value => {
 
@@ -95,5 +94,3 @@ export class MuralComponent implements OnInit {
   }
 
 }
-
-
