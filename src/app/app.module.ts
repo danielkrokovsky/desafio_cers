@@ -8,11 +8,14 @@ import { LocadoraComponent } from './locadora/locadora.component';
 import { LocadoraService } from './locadora/locadora.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { MuralComponent } from './mural/mural.component';
+import { MuralService } from './mural/mural.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LocadoraComponent
+    LocadoraComponent,
+    MuralComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [LocadoraService],
+  providers: [MuralService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
