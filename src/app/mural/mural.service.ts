@@ -17,7 +17,6 @@ export class MuralService {
 
   save(mural: Mural): Observable<Mural> {
 
-    debugger
     return this.http.post<any>(`${apiUrl}`, mural);
   }
 
