@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Mural } from './mural';
 import { MuralService } from './mural.service';
 import { pipe } from 'rxjs';
-import { mergeMap, map } from 'rxjs/operators'; 
+import { mergeMap, map } from 'rxjs/operators';
+import { Pagination } from './pagination';
 
 @Component({
   selector: 'app-mural',
@@ -13,6 +14,7 @@ export class MuralComponent implements OnInit {
 
   mural: Mural;
   listmural: Mural[];
+  page: Pagination;
 
   constructor(private muralService: MuralService) {
 
@@ -21,14 +23,16 @@ export class MuralComponent implements OnInit {
   ngOnInit() {
 
     this.mural = new Mural();
-    this.loadData();
+    this.page = new Pagination();
+    this.loadPagination();
+    this.pagination(0);
   }
 
-  loadData() {
 
-    this.muralService.getAll().subscribe(pipe(value => {
-
-      this.listmural = value["_embedded"].mural;
+  loadPagination() {
+    this.muralService.getAllPagination().subscribe(pipe(value => {
+      this.page = value["page"];
+      this.page.arrayPages = this.arrayOne(this.page.totalPages)
     }));
   }
 
@@ -36,7 +40,7 @@ export class MuralComponent implements OnInit {
     this.muralService.save(this.mural).subscribe(
 
       (res) => {
-        this.loadData()
+        this.pagination(0);
         this.mural = new Mural();
       }
     );
@@ -60,13 +64,29 @@ export class MuralComponent implements OnInit {
     this.muralService.remove(mural.id).subscribe(
       () => {
 
-        this.listmural.forEach(function(item, index, object) {
+        this.listmural.forEach(function (item, index, object) {
           if (item.id === mural.id) {
             object.splice(index, 1);
           }
         });
-      } 
+      }
     );
   }
 
+  pagination(page:number){
+
+    debugger
+    this.muralService.getAll(page).subscribe(pipe(value => {
+
+      this.listmural = value["_embedded"].mural;
+    }));
+
+  }
+
+  private arrayOne(n: number): any[] {
+    return Array(n);
+  }
+
 }
+
+
