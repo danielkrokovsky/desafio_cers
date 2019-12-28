@@ -23,12 +23,12 @@ export class MuralService {
 
   getAllPagination(): Observable<Pagination> {
 
-    return this.http.get<any>(`${apiUrl}?size=10`);
+    return this.http.get<any>(`${apiUrl}?size=5`);
   }
 
   getAll(page:number): Observable<Mural[]> {
 
-    return this.http.get<any>(`${apiUrl}?size=10&page=${page}&sorted=id`);
+    return this.http.get<any>(`${apiUrl}?size=5&page=${page}&sorted=id`);
   }
 
   remove(mural: number): Observable<Mural> {

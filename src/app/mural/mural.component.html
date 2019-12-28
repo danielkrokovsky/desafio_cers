@@ -39,7 +39,7 @@
       </div>
     </div>
   </div>
-  <div class="form-row paddingTable form-group">
+  <div class="form-row paddingTable">
     <div class="row col-md-12">
       <table class="table table-striped">
         <thead>
@@ -55,13 +55,17 @@
           <tr *ngFor="let i of listmural">
             <th scope="row">{{i.id}}</th>
             <td class="col-md-5">{{i.title}}</td>
-            <td class="col-md-2"><i class="material-icons" style="font-size:24px;" (click)="visibility(i)">visibility</i></td>
-            <td class="col-md-2"><i class="material-icons" style="font-size:24px;" (click)="remove(i)">delete</i></td>
             <td class="col-md-2">
-              <i class="material-icons" style="font-size:24px;" *ngIf="i.status">
+              <i class="material-icons" data-toggle="tooltip" title="View warnings" (click)="visibility(i)">visibility</i>
+            </td>
+            <td class="col-md-2">
+              <i class="material-icons" data-toggle="tooltip" title="Remove warnings" (click)="remove(i)">delete</i>
+            </td>
+            <td class="col-md-2">
+              <i class="material-icons" style="font-size:24px;" *ngIf="i.status" data-toggle="tooltip" title="Warnings viewed">
                 check_box
               </i>
-              <i class="material-icons" style="font-size:24px;" *ngIf="!i.status">
+              <i class="material-icons" style="font-size:24px;" *ngIf="!i.status" data-toggle="tooltip" title="warnings not viewed">
                 check_box_outline_blank
               </i>
             </td>

@@ -16,9 +16,7 @@ export class MuralComponent implements OnInit {
   listmural: Mural[];
   page: Pagination;
 
-  constructor(private muralService: MuralService) {
-
-  }
+  constructor(private muralService: MuralService) {}
 
   ngOnInit() {
 
@@ -56,10 +54,8 @@ export class MuralComponent implements OnInit {
       'description': mural.description,
       'status': mural.status = true
     }
-
     this.muralService.save(this.mural).subscribe();
   }
-
 
   remove(mural: Mural) {
 
@@ -86,7 +82,6 @@ export class MuralComponent implements OnInit {
 
       this.listmural = value["_embedded"].mural;
     }));
-
   }
 
   private arrayOne(n: number): any[] {
