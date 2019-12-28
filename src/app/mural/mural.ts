@@ -8,4 +8,5 @@ export class Mural {
     description:string
     publish:Date;
     visualization:Date;
+    status: boolean;
 }

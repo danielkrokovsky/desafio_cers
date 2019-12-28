@@ -53,9 +53,11 @@ export class MuralComponent implements OnInit {
       'publish': mural.publish,
       'title': mural.title,
       'visualization': mural.visualization,
-      'description': mural.description
+      'description': mural.description,
+      'status': mural.status = true
     }
 
+    this.muralService.save(this.mural).subscribe();
   }
 
 
@@ -69,13 +71,18 @@ export class MuralComponent implements OnInit {
             object.splice(index, 1);
           }
         });
+
+        if (this.listmural.length === 0) {
+
+          this.pagination(0);
+          this.loadPagination();
+        }
       }
     );
   }
 
-  pagination(page:number){
+  pagination(page: number) {
 
-    debugger
     this.muralService.getAll(page).subscribe(pipe(value => {
 
       this.listmural = value["_embedded"].mural;

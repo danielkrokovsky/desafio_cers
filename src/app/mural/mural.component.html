@@ -2,11 +2,11 @@
 
   <div>
     <div class="row">
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-2">
         <label for="id">ID</label>
         <input type="text" class="form-control" id="id" [(ngModel)]="mural.id" disabled>
       </div>
-      <div class="form-group col-md-8">
+      <div class="form-group col-md-10">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" placeholder="Title" [(ngModel)]="mural.title">
       </div>
@@ -41,25 +41,30 @@
   </div>
   <div class="form-row paddingTable form-group">
     <div class="row col-md-12">
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Title</th>
-            <th scope="col">Publish</th>
-            <th scope="col">Visualization</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col">View</th>
+            <th scope="col">Remove</th>
+            <th scope="col">Viewed</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let i of listmural">
             <th scope="row">{{i.id}}</th>
-            <td>{{i.title}}</td>
-            <td>{{i.publish | date : "dd/MM/yyyy"}}</td>
-            <td>{{i.visualization | date : "dd/MM/yyyy"}}</td>
-            <td><i class="material-icons" style="font-size:24px;" (click)="visibility(i)">visibility</i></td>
-            <td><i class="material-icons" style="font-size:24px;" (click)="remove(i)">delete</i></td>
+            <td class="col-md-5">{{i.title}}</td>
+            <td class="col-md-2"><i class="material-icons" style="font-size:24px;" (click)="visibility(i)">visibility</i></td>
+            <td class="col-md-2"><i class="material-icons" style="font-size:24px;" (click)="remove(i)">delete</i></td>
+            <td class="col-md-2">
+              <i class="material-icons" style="font-size:24px;" *ngIf="i.status">
+                check_box
+              </i>
+              <i class="material-icons" style="font-size:24px;" *ngIf="!i.status">
+                check_box_outline_blank
+              </i>
+            </td>
 
           </tr>
         </tbody>
@@ -71,11 +76,9 @@
     <div class="form-group col-md-12">
       <nav aria-label="Page navigation example" style="float: right;">
         <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
           <li class="page-item" *ngFor="let page of page.arrayPages; index as i">
             <a class="page-link" (click)="pagination(i)">{{i + 1}}</a>
           </li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
       </nav>
     </div>
