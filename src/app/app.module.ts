@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LocadoraComponent } from './locadora/locadora.component';
-import { LocadoraService } from './locadora/locadora.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MuralComponent } from './mural/mural.component';
@@ -14,7 +12,6 @@ import { MuralService } from './mural/mural.service';
 @NgModule({
   declarations: [
     AppComponent,
-    LocadoraComponent,
     MuralComponent
   ],
   imports: [

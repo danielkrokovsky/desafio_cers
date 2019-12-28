@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Mural } from './mural';
 import { Pagination } from './pagination';
 
-const apiUrl = 'http://10.0.0.110:8080/api/mural';
+const apiUrl = 'http://localhost:8080/api/mural';
 
 @Injectable({
   providedIn: 'root'
