@@ -80,7 +80,7 @@ export class MuralComponent implements OnInit {
 
     this.muralService.getAll(page).subscribe(pipe(value => {
 
-      this.listmural = value["content"];
+      this.listmural = value["_embedded"].mural;
 
       console.log(this.listmural);
     }));
