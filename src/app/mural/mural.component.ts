@@ -26,7 +26,6 @@ export class MuralComponent implements OnInit {
     this.data(0);
   }
 
-
   loadPagination() {
     this.muralService.getAllPagination().subscribe(pipe(value => {
       this.page = value["page"];
@@ -40,6 +39,11 @@ export class MuralComponent implements OnInit {
       (res) => {
         this.data(0);
         this.mural = new Mural();
+
+        if(this.listmural.length === 5){
+
+          this.loadPagination();
+        }
       }
     );
   }
@@ -82,7 +86,6 @@ export class MuralComponent implements OnInit {
 
       this.listmural = value["_embedded"].mural;
 
-      console.log(this.listmural);
     }));
   }
 
